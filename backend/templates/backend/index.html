@@ -1,0 +1,86 @@
+{% extends 'layout.html' %}
+
+{% load static %}
+
+{% block title %}
+  HOME
+{% endblock %}
+
+{% block main %}
+  <main>
+
+    <h2>Frequently Asked Questions</h2>
+
+
+    <div class="faq open">
+      <div class="faq_text">
+        <h3>What Are NFTs?</h3>
+        <p>
+          Non-fungible token (NFT) is a term used to describe a unique digital asset whose ownership
+          is tracked on a blockchain, such as Ethereum.
+          Assets that can be represented as NFTs range from digital goods, such as items that exist
+          within virtual worlds, to claims on physical assets such as clothing items or real estate.
+          In the coming years, we will see NFTs used to unlock entirely new use cases that are only made
+          possible by crypto.
+        </p>
+      </div>
+      <span class="btn" id="plus">+</span>
+    </div>
+
+
+    <div class="faq">
+      <div class="faq_text">
+        <h3>Why are NFTs interesting?</h3>
+        <p>
+          NFTs can make fractionalized ownership more accessible,
+          so if there is a valuable item that otherwise wouldn’t have been accessible
+          for someone to own, now they can own a piece of it. Custody of a physical item
+           still requires a trustworthy custodian, but being able to issue, hold, and trade
+           it as a cryptoasset unlocks more use cases. One can also craft an NFT such that
+           the creator receives a percentage of all secondary sales in a completely automated
+           way. Artists typically don’t receive a cut of secondary sales in the traditional
+           art world.
+        </p>
+      </div>
+      <span class="btn" id="plus">+</span>
+    </div>
+
+
+    <div class="faq">
+      <div class="faq_text">
+        <h3>Social tokens</h3>
+        <p>
+          The emerging area of social tokens grew significantly in 2020.
+          Social tokens are a broad category of tokens issued by individuals and communities.
+          This term encompasses other similar terms like personal token, community token, and creator token.
+          So far there hasn’t been a standardized term but we will use social tokens to refer to the broader category.
+          Social tokens enable creators and communities to have more ownership in what they are building which is extremely exciting.
+        </p>
+      </div>
+      <span class="btn" id="plus">+</span>
+    </div>
+
+    <script>
+      const faqTag = document.querySelectorAll('.faq');
+      const hideTag = () => {
+        faqTag.forEach(item => {
+          item.classList.remove('open');
+          item.children[1].innerHTML = '&#43';
+        })
+      }
+
+
+      faqTag.forEach(item => {
+        item.addEventListener('click', e => {
+          if (e.target.className == 'btn') {
+            hideTag();
+            e.target.parentElement.classList.toggle('open')
+            e.target.innerHTML = '-';
+          }
+        })
+      })
+    </script>
+
+
+  </main>
+{% endblock %}
