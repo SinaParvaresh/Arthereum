@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+
+{% load static %}
+
+{% block titile %}
+  Profile
+{% endblock %}
+
+{% block main %}
+  <main id="main-holder">
+    <div class="tabs">
+      <div class="tabs__bar">
+        <button class="button button--active" data-for-tab="1">Collection</button>
+        <button class="button" data-for-tab="2">Offers</button>
+      </div>
+    <br />
+      <div class="tabs__content tabs__content--active" data-tab="1">
+        <div class="control control--active">
+          <input class="input" type="text" placeholder="Search">
+        </div>
+       </div>
+
+      <div class="tabs__content" data-tab="2">
+        <div class="control control--active">
+            <div class="select">
+              <select>
+                <option>Offers Received</option>
+                <option>Offers Made</option>
+              </select>
+            </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      function setupTabs () {
+        document.querySelectorAll(".button").forEach(button => {
+            button.addEventListener("click", () => {
+                const tabsBar = button.parentElement;
+                const tabsContainer =  tabsBar.parentElement;
+                const tabNumber = button.dataset.forTab;
+                const tabToActivate = tabsContainer.querySelector(`.tabs__content[data-tab="${tabNumber}"]`);
+
+                tabsBar.querySelectorAll(".button").forEach(button => {
+                    button.classList.remove("button--active");
+                });
+                tabsContainer.querySelectorAll(".tabs__content").forEach(tab => {
+                    tab.classList.remove("tabs__content--active");
+                });
+
+                button.classList.add("button--active");
+                tabToActivate.classList.add("tabs__content--active");
+            });
+        });
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+          setupTabs();
+      })
+    </script>
+  </main>
+{% endblock %}

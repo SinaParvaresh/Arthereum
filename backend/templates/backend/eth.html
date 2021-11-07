@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+
+{% load static %}
+
+{% block title %}
+  transactions
+{% endblock %}
+
+{% block nav %}
+<nav>
+    <input type="checkbox" id="check">
+    <label for="check" class="checkbtn">
+      <i class="fas fa-bars"></i>
+    </label>
+    <label class="logo">Auction Token</label>
+    <ul>
+      <li><a class="active" href="index.html">Home</a></li>
+      <li><a href="login.html">Login</a></li>
+      <li><a href="profile.html">Profile</a></li>
+      <li><a href="auction.html">Auction</a></li>
+      <li><a href="details.html">Details</a></li>
+      <li><a href="upload.html">Upload</a></li>
+    </ul>
+  </nav>
+{% endblock %}
+
+{% block body %}
+<body>
+  <button class="enableEthereumButton">Enable Ethereum </button>
+  <div class="intro" id = "intro">
+    <h2>Account: <span class="showAccount"></span></h2>
+    <h2>Balance: <span class="showBalance"></span></h2>
+    <button class="sendEthButton">Send Eth </button>
+  </div>
+  <script src="{% static 'js/transaction.js' %}"></script>
+</body>
+{% endblock %}

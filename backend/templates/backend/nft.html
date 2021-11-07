@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+
+{% load static %}
+
+{% block title %}
+  NFT
+{% endblock %}
+
+{% block nav %}
+<nav>
+  <input type="checkbox" id="check">
+  <label for="check" class="checkbtn">
+    <i class="fas fa-bars"></i>
+  </label>
+  <label class="logo">Auction Token</label>
+  <ul>
+    <li><a class="active" href="{% url 'backend:index' %}">Home</a></li>
+    {% if not request.user.is_authenticated %}
+    <li><a href="{% url 'backend:login' %}">Login</a></li>
+    {% else %}
+    <li><a href="{% url 'backend:profile' request.user.id %}">Profile</a></li>
+    <li><a href="{% url 'backend:auction' %}">Auction</a></li>
+    <li><a href="{% url 'backend:upload' %}">Upload</a></li>
+    <li><a href="#">Logout</a></li>
+    {% endif %}
+  </ul>
+</nav>
+
+{% endblock %}
+
+{% block body %}
+<body>
+    <img class="imgs" src="{% static 'img/AuctionTokenDefaultPicture.png' %}">
+    <div class="details">
+        <h1>Name:</h1>
+        <div class="owner">
+            Owned by: {{ item.owner.username }}
+        </div>
+        <div class="currentPrice">
+            Current price: {{ item.cur_bid }}
+        </div>
+        <div class="time">
+            Time Left: {{ item.time }}
+        </div>
+        <div class="buttons">
+          <a href="{% url 'backend:transaction' item.owner.address %}"><button class="button is-danger">Buy Now</button></a>
+          <a href="{% url 'backend:make_offer' item.id 10 %}"><button class="button is-info">Make Offer</button></a>
+        </div>
+    </div>
+</body>
+{% endblock %}

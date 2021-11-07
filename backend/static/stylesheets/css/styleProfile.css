@@ -1,0 +1,53 @@
+h2 {
+    color: black;
+} 
+.tabs {
+    border: 1px solid #cccccc;
+    display: grid;
+    grid-template-rows: 10px;
+}
+
+.tabs__bar {
+    width: 125px;
+    flex-shrink: 0;
+    
+}
+
+.button {
+    padding: 10px;
+    background: #eeeeee;
+    border: none;
+    outline: none;
+    width: 100%;
+}
+
+.button:active {
+    background: #dddddd;
+}
+
+.button:not(:last-of-type) {
+    border: 1px solid #cccccc;
+}
+
+.button--active {
+    font-weight: bold;
+    border: 2px solid;
+    background: #dddddd;
+}
+
+.tabs__content {
+    padding: 15px;
+    display: none;
+}
+
+.tabs__content--active {
+    display: block;
+}
+
+.tabs__content > :first-child {
+    margin-top: 0;
+}
+
+.control {
+    display: block;
+}

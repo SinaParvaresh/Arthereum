@@ -1,0 +1,77 @@
+{% extends 'layout.html' %}
+
+{% load static %}
+
+{% block title %}
+  Auction
+{% endblock %}
+
+{% block nav %}
+<nav>
+  <input type="checkbox" id="check">
+  <label for="check" class="checkbtn">
+    <i class="fas fa-bars"></i>
+  </label>
+  <label class="logo">Auction Token</label>
+  <ul>
+    <li><a class="active" href="{% url 'backend:index' %}">Home</a></li>
+    {% if not request.user.is_authenticated %}
+    <li><a href="{% url 'backend:login' %}">Login</a></li>
+    {% else %}
+    <li><a href="{% url 'backend:profile' request.user.id %}">Profile</a></li>
+    <li><a href="{% url 'backend:auction' %}">Auction</a></li>
+    <li><a href="#">Logout</a></li>
+    {% endif %}
+  </ul>
+</nav>
+{% endblock %}
+
+{% block body %}
+<body>
+
+    <div class="assets">
+      <div class="allNft">
+        <div class="select">
+          <select>
+            <option>All NFTs</option>
+          </select>
+        </div>
+      </div>
+      <div class="sortBy">
+          <div class="select">
+            <select>
+              <option>Low to High</option>
+              <option>High to Low</option>
+            </select>
+          </div>
+      </div>
+    </div>
+    <br />
+
+    <div class="table">
+      <table class="table is-bordered is-fullwidth">
+        <thead>
+          <tr>
+            <th><abbr title="Bid">Highest Current Bid</abbr></th>
+            <th><abbr title="Price">Current Price</abbr></th>
+            <th><abbr title="Buy">Owner</abbr></th>
+            <th><abbr title="Time">Buy Till</abbr></th>
+            <th><abbr title="Name">Name</abbr></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in list %}
+          <tr>
+            <td>{{ item.cur_bid }}</td>
+            <td>{{ item.highest }}</td>
+            <td>{{ item.owner.username }}</td>
+            <td>{{ item.time }}</td>
+            <td><a href="{% url 'backend:details' item.id %}">{{ item.name }}</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+</body>
+{% endblock %}

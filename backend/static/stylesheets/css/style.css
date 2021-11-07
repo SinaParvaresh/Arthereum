@@ -140,8 +140,7 @@
   padding: 30px;
 }
   .container,
-  .form__input,
-  .form__button {
+  .form__input {
     font: 500 1rem 'Quicksand', sans-serif;
     
   }
@@ -246,6 +245,10 @@
 
   .form__link:hover{
     text-decoration: underline;
+  }
+
+  #roundedButton {
+    padding: 3%;
   }
 
   h2 {

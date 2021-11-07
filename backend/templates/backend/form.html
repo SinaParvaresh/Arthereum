@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+
+{% load static %}
+
+{% block title %}
+  Upload NFT
+{% endblock %}
+
+{% block nav %}
+<nav>
+  <input type="checkbox" id="check">
+  <label for="check" class="checkbtn">
+    <i class="fas fa-bars"></i>
+  </label>
+  <label class="logo">Auction Token</label>
+  <ul>
+    <li><a class="active" href="{% url 'backend:index' %}">Home</a></li>
+    {% if not request.user.is_authenticated %}
+    <li><a href="{% url 'backend:login' %}">Login</a></li>
+    {% else %}
+    <li><a href="{% url 'backend:profile' request.user.id %}">Profile</a></li>
+    <li><a href="{% url 'backend:auction' %}">Auction</a></li>
+    <li><a href="{% url 'backend:upload' %}">Upload</a></li>
+    <li><a href="#">Logout</a></li>
+    {% endif %}
+  </ul>
+</nav>
+{% endblock %}
+
+{% block body %}
+<body>
+    <form class="form" id="upload">
+        <h1 class="form__title">Upload your NFT</h1>
+        <p>
+            Click the button below to upload your NFT
+        </p>
+        <div class="form__message form__message--error"></div>
+
+        <button class="button is-primary is-rounded" type="submit">Upload</button>
+      </form>
+</body>
+{% endblock %}
