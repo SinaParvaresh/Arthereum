@@ -11,3 +11,4 @@ class Auction(models.Model):
     cur_bid = models.IntegerField(default=10)
     highest = models.IntegerField(default=11)
     owner = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
+    time = models.DateTimeField(null=True)
